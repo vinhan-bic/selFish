@@ -18,7 +18,7 @@ export default function HomeCarousel({isLoop, data, onPressBanner}: Props) {
     const [displayList, setDisplayList] = useState(data)
     const [currentIndex, setCurrentIndex] = useState(0);
     const FlatlistRef = useRef<FlatList>(null);
-    const maxWidth = Dimensions.get("window").width;
+    const maxWidth = Dimensions.get("window").width - 20 * 2;
     const ITEM_HEIGHT = maxWidth;
     const CAROUSEL_DURATION = 1500
     // const carouselData = [...data, data[0]]
@@ -29,6 +29,7 @@ export default function HomeCarousel({isLoop, data, onPressBanner}: Props) {
             style={{
                 width: maxWidth,
                 height: 120,
+                borderRadius: 10,
             }}>
             <View
                 width={maxWidth}
@@ -39,7 +40,8 @@ export default function HomeCarousel({isLoop, data, onPressBanner}: Props) {
                     style={{
                         width: '100%',
                         height: '100%',
-                        resizeMode: 'stretch'
+                        resizeMode: 'stretch',
+                        borderRadius: 10,
                     }}
                 />
             </View>
@@ -77,6 +79,9 @@ export default function HomeCarousel({isLoop, data, onPressBanner}: Props) {
                 snapToAlignment={"start"}
                 snapToInterval={maxWidth}
                 decelerationRate="fast"
+                onScroll={(e) => {
+                    console.log(e)
+                }}
             />
             <View flexDirection="row" justifyContent="center" alignItems={'center'} gap={10}>
                 {data.map((item, index) => {

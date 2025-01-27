@@ -7,6 +7,7 @@ import HomeCategories from "@/src/screens/Home/components/HomeCategories";
 import HomeRecommendation from "@/src/screens/Home/components/HomeRecommendation";
 
 import {useHomeScreenController} from "@/src/hooks";
+import {ScreenLayout} from "@/src/components";
 
 export default function HomeScreen() {
     const {
@@ -21,8 +22,8 @@ export default function HomeScreen() {
     } = useHomeScreenController();
     return (
         <Theme name={"light"}>
-            <ScrollView>
-                <View padding={20} backgroundColor={"$background"}>
+            <ScreenLayout isAdjustBottomTabHeight backgroundColor={"$background"}>
+                <View padding={20}>
                     <HomeHeader name={name}/>
                     <View height={20}/>
                     <HomeCarousel isLoop={true} data={carousels} onPressBanner={onPressBanner}/>
@@ -35,7 +36,8 @@ export default function HomeScreen() {
                         onPressAddFavorite={onPressAddFavorite}
                     />
                 </View>
-            </ScrollView>
+            </ScreenLayout>
         </Theme>
+
     )
 }

@@ -6,12 +6,10 @@ import {TamaguiProvider} from "tamagui";
 export default function RootLayout() {
     const theme = useColorScheme();
     return (
-        <SafeAreaView style={{flex: 1}}>
-            <TamaguiProvider defaultTheme={theme as "light"} config={config}>
+        <TamaguiProvider defaultTheme={theme as "light"} config={config}>
             <Stack screenOptions={{
                 headerShown: false,
             }}/>
-            </TamaguiProvider>
-        </SafeAreaView>
+        </TamaguiProvider>
     );
 }
